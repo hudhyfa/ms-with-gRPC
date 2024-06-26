@@ -1,8 +1,13 @@
 syntax = "proto3";
 
 service Recipes {
-    rpc Find (ProductId) returns (Recipe) {};
+    rpc find (ProductId) returns (Recipe) {};
+    rpc addRecipe (Recipe) returns (VoidReturn) {};
+    rpc updateRecipe (Recipe) returns (VoidReturn) {};
+    rpc removeRecipe (Recipe) returns (VoidReturn) {};
 }
+
+message VoidReturn {};
 
 message ProductId {
     int32 id = 1;
