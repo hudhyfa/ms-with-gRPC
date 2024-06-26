@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+service Kitchen {
+    rpc Chef (OrderRequest) returns (stream OrderStatusUpdate) {};
+}
+
+message OrderRequest {
+    int32 recipeId = 1;
+    int32 orderId = 2;
+}
+
+enum OrderStatus {
+    NEW = 0;
+    QUEUED = 1;
+    COOKING = 2;
+    DONE = 3;
+}
+
+message OrderStatusUpdate {
+    OrderStatus status = 1;
+}
